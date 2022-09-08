@@ -1,0 +1,153 @@
+/* BEGINNING OF NAVBAR */
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  /* border: 2px solid gray; */
+  align-items: center;
+  text-align: center;
+  height: 100px;
+}
+
+.brand_name {
+  font-size: 1.8rem;
+  /* border: 2px solid blue; */
+  margin-left: 20px;
+  font-family: "Cinzel", serif;
+  /* color: palevioletred; */
+}
+
+.toggle {
+  display: none;
+  /* border: 2px solid red; */
+  padding-top: 3px;
+}
+
+.links_div ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  /* border:  2px solid yellow; */
+}
+
+.links a {
+  margin: 2px 11px;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+
+.social {
+  margin-right: 50px;
+}
+
+.social a {
+  list-style: none;
+  text-decoration: none;
+  color: black;
+  margin-right: 4px;
+  padding-left: 12px;
+}
+
+/* unvisited link */
+nav a:link {
+  color: black;
+}
+
+/* visited link */
+nav a:visited {
+  color: black;
+}
+
+/* mouse over link */
+nav a:hover {
+  color: palevioletred;
+}
+
+/* selected link */
+nav a:active {
+  color: palevioletred;
+  /* border-top: 2px solid blue; */
+}
+.mobile{
+  display: none;
+}
+
+/* MEDIA QUERIES FOR SMALLER SCREEN OF NAVBAR  */
+@media screen and (max-width: 400px) {}
+
+@media screen and (max-width: 760px) {
+  nav {
+    flex-direction: column;
+    background: white;
+    height: max-content;
+  }
+
+  .brand_and_toggle {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .cc{
+    display: flex;
+  }
+
+  /* .brand_name{font-size: 1.2rem;} */
+
+  .links_div {
+    width: 95%;
+    position: absolute;
+    top: -200px;
+    z-index: -6;
+    transition: 1s all ease-in;
+    /* background: palevioletred;
+         */
+    background: #b3afc0;
+  }
+
+  .links_div.show {
+    top: 39px;
+    z-index: 200;
+
+  }
+
+  .links_div ul {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: rgb(85, 79, 79);
+    /* color: white; */
+  }
+
+  .links {
+    display: block;
+    width: 100%;
+    padding: 5px 0;
+    font-weight: 500;
+    /* border: 2px solid green; */
+  }
+
+  .social {
+    display: none;
+  }
+
+  .toggle {
+    display: block;
+    margin-right: 20px;
+    margin-top: 8px;
+  }
+
+  .links_div ul li a {
+    color: white;
+
+
+  }
+  .mobile{
+    display: block;
+    margin-right: 0px;
+    margin-top: 10px;
+  }
+}
+
+/* END OF NAVBAR */
