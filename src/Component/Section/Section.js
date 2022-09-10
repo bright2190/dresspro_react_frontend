@@ -27,15 +27,15 @@ const Section = (props) => {
 
 
 
-  let cloth_name = props.cloth_name;
-  let cloth_images_link = props.cloth_images_link;
+  let cloth_name = props.cloth_object.name;
+  let cloth_images_link = props.cloth_object.images;
   let cloth_name_unspaced = cloth_name.replace(/\s+/g, "").toLowerCase();
-  let number_of_clothes = props.number_of_clothes;
+  let number_of_clothes = 20;
   let cloth_name_lowercase = cloth_name.toLowerCase();
   let number_of_clothes_div = [
   
   ];
-  for (let i = 0; i < number_of_clothes; i++){
+  for (let i = 0; i < cloth_images_link.length; i++){
     number_of_clothes_div.push(
       <div
         class="section_image_container"

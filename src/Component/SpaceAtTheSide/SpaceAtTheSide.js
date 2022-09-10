@@ -21,7 +21,9 @@ import  {Policy}  from "../Policy/Policy";
 
 export default function SpaceAtTheSide() {
 
-  const [data, setData] = useState([])
+  const [dressProData, setDressProData] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  
 
   function navbar_toggler(){
         document.getElementsByClassName("links_div")[0].classList.toggle("show");
@@ -45,19 +47,19 @@ export default function SpaceAtTheSide() {
 
   const fetcher = ()=>{
      axios.get("http://localhost:9000/testAPI").then((data) => {
-       setData(data.data);
-       console.log(data);
+       setDressProData(data.data);
+       console.log(data.data);
      });
 
   }
 
   useEffect(()=>{
     fetcher();
-    console.log(data)
+    // console.log(data)
   
   }, []);
 
-   if (data.length === 0) {
+   if (dressProData.length === 0) {
      return (
        <>
          <div>loading</div>
@@ -66,24 +68,38 @@ export default function SpaceAtTheSide() {
    }
    
 
-   for (let i = 0;i<data.length;i++){
+   for (let i = 0;i<dressProData.length;i++){
 
    }
 
-   let new_cloth_route 
-
-  let cloth_categories = data.cloth_categories;
-  let cloth_images_link = data.cloth_images_link;
-  let cloth_categories_number = data.cloth_images_link
-
-  let cloth_route =  cloth_categories.map((cloth_name, index) =>{
-    let cloth_name_id = cloth_name.replace(/\s+/g, "").toLowerCase();
-    let number_of_clothes = cloth_categories_number[index]
+   let new_cloth_route = dressProData.map((cloth_object, index)=>{
+    let { name} = cloth_object
+    let cloth_name_id = name.replace(/\s+/g, "").toLowerCase();
     return (
-          <Route path={"/" + cloth_name_id} element={<Section cloth_name={cloth_name} number_of_clothes={number_of_clothes} cloth_images_link={cloth_images_link}/>}></Route>
+      <Route
+        path={"/" + cloth_name_id}
+        element={
+          <Section
+            cloth_object={cloth_object}
+          />
+        }
+      ></Route>
+    );
 
-    )
-  })
+   })
+
+  // let cloth_categories = data.cloth_categories;
+  // let cloth_images_link = data.cloth_images_link;
+  // let cloth_categories_number = data.cloth_images_link
+
+  // let cloth_route =  cloth_categories.map((cloth_name, index) =>{
+  //   let cloth_name_id = cloth_name.replace(/\s+/g, "").toLowerCase();
+  //   let number_of_clothes = cloth_categories_number[index]
+  //   return (
+  //         <Route path={"/" + cloth_name_id} element={<Section cloth_name={cloth_name} number_of_clothes={number_of_clothes} cloth_images_link={cloth_images_link}/>}></Route>
+
+  //   )
+  // })
 
 
  
@@ -100,10 +116,11 @@ export default function SpaceAtTheSide() {
       <div class="space_at_the_side">
         <Navbar navbar_togglerProps={navbar_toggler} />
         <Routes>
-          {cloth_route}
+          {/* {cloth_route} */}
+          {new_cloth_route}
           <Route
             path="/"
-            element={<Home cloth_categories={cloth_categories} />}
+            element={<Home dressProData={dressProData} />}
           ></Route>
           <Route path="/customer" element={<CustomerReview />}></Route>
           <Route path="/about" element={<AboutUs />}></Route>

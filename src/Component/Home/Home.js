@@ -6,7 +6,7 @@ import Product from '../Product/Product';
 
 export default function Home(props) {
 
-  let cloth_categories = props.cloth_categories
+  let dressProData = props.dressProData
 
   function second_layer_hover(event) {
     event.currentTarget.querySelector(".on_hover_display").style.display =
@@ -26,9 +26,9 @@ export default function Home(props) {
       <Product
         second_layer_hover={second_layer_hover}
         second_layer_hover_remove={second_layer_hover_remove}
-        cloth_categories={cloth_categories}
+        dressProData = {dressProData}
       />
-      <Specific cloth_categories={cloth_categories} />
+      <Specific dressProData={dressProData}/>
       <Feature />
     </>
   );

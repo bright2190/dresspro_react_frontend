@@ -17,10 +17,33 @@ export default function Product(props) {
       let second_layer_hover = props.second_layer_hover;
       let second_layer_hover_remove = props.second_layer_hover_remove;
       let cloth_categories = props.cloth_categories;
-      let cloth_divs =  cloth_categories.map((cloth, index)=>{
+      let dressProData = props.dressProData;
+      // let cloth_divs =  cloth_categories.map((cloth, index)=>{
+      // let cloth_name_id = cloth.replace(/\s+/g, "").toLowerCase();
+
+      //   return (
+      //     <>
+      //       <SwiperSlide
+      //         id={"swiper2-slide" + index}
+      //         onMouseOver={second_layer_hover}
+      //         onMouseLeave={second_layer_hover_remove}
+      //       >
+      //         <div class="on_hover_display">
+      //           <div class="middle_hover">
+      //             {/* <Link to="">Order Now</Link> */}
+      //             <a href={"/" + cloth_name_id}>Order Now</a>
+      //           </div>
+      //           <div class="down_hover">{cloth}</div>
+      //         </div>
+      //       </SwiperSlide>
+      //     </>
+      //   );
+      // })
+
+      let new_cloth_div = dressProData.map((cloth_object, index)=>{
+      let cloth_name_id = cloth_object.name.replace(/\s+/g, "").toLowerCase();
 
 
-      let cloth_name_id = cloth.replace(/\s+/g, "").toLowerCase();
 
         return (
           <>
@@ -34,7 +57,7 @@ export default function Product(props) {
                   {/* <Link to="">Order Now</Link> */}
                   <a href={"/" + cloth_name_id}>Order Now</a>
                 </div>
-                <div class="down_hover">{cloth}</div>
+                <div class="down_hover">{cloth_object.name}</div>
               </div>
             </SwiperSlide>
           </>
@@ -83,7 +106,8 @@ export default function Product(props) {
         </SwiperSlide> */}
         
         
-        {cloth_divs}
+        {/* {cloth_divs} */}
+        {new_cloth_div}
       </Swiper>
     </>
   );
