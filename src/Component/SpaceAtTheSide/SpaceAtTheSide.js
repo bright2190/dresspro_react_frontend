@@ -23,6 +23,7 @@ export default function SpaceAtTheSide() {
 
   const [dressProData, setDressProData] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [cartData, setCartData] = useState(["ststae"]);
   
 
   function navbar_toggler(){
@@ -59,6 +60,16 @@ export default function SpaceAtTheSide() {
   
   }, []);
 
+  const addToCartHandler = (cloth_images_link) => {
+    alert("hi");
+    alert(cloth_images_link)
+    alert()
+    console.log(cartData);
+    setCartData([...cartData, cloth_images_link])
+    console.log(cartData)
+
+  }
+
    if (dressProData.length === 0) {
      return (
        <>
@@ -81,6 +92,8 @@ export default function SpaceAtTheSide() {
         element={
           <Section
             cloth_object={cloth_object}
+            cartData = {cartData}
+            addToCartHandler={addToCartHandler}
           />
         }
       ></Route>
@@ -120,12 +133,12 @@ export default function SpaceAtTheSide() {
           {new_cloth_route}
           <Route
             path="/"
-            element={<Home dressProData={dressProData} />}
+            element={<Home dressProData={dressProData} addToCartHandler={addToCartHandler}/>}
           ></Route>
           <Route path="/customer" element={<CustomerReview />}></Route>
           <Route path="/about" element={<AboutUs />}></Route>
           <Route path="/policy" element={<Policy />}></Route>
-          <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/cart" element={<Cart cartData={cartData} />}></Route>
         </Routes>
         <Footer />
       </div>

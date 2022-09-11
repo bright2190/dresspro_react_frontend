@@ -3,6 +3,7 @@ import React from 'react'
 import "./Section.css"
 import logo from "../../../src/assets/images/about4.jpg"
 import { Policy } from '../Policy/Policy'
+import AddToCart from '../AddToCart/AddToCart'
 
 const Section = (props) => {
 
@@ -19,14 +20,15 @@ const Section = (props) => {
 
 
 
+  let addToCartHandler = props.addToCartHandler;
+  let cartData = props.cartData;
 
 
 
 
 
 
-
-
+  let cloth_object= props.cloth_object
   let cloth_name = props.cloth_object.name;
   let cloth_images_link = props.cloth_object.images;
   let cloth_name_unspaced = cloth_name.replace(/\s+/g, "").toLowerCase();
@@ -36,6 +38,14 @@ const Section = (props) => {
   
   ];
   for (let i = 0; i < cloth_images_link.length; i++){
+    let addOrRemove = "ADD TO CART";
+    for(let j=0; j<cartData;j++){
+      if(cartData[j]===cloth_images_link[i]){
+        addOrRemove =  "REMOVE FROM CART"
+      }
+    }
+
+
     number_of_clothes_div.push(
       <div
         class="section_image_container"
@@ -53,7 +63,9 @@ const Section = (props) => {
         >
           <div class="section_image_hover">
             <div class="image_identity">{cloth_name_unspaced + i}</div>
-            <div class="buy_now">BUY NOW</div>
+            {/* <div class="buy_now">BUY NOW</div> */}
+            {/* <AddToCart /> */}
+            <div className="buy_now" onClick={()=>addToCartHandler(cloth_images_link[i])}>{addOrRemove}</div>
           </div>
         </div>
       </div>

@@ -7,6 +7,7 @@ import Product from '../Product/Product';
 export default function Home(props) {
 
   let dressProData = props.dressProData
+  let addToCartHandler = props.addToCartHandler
 
   function second_layer_hover(event) {
     event.currentTarget.querySelector(".on_hover_display").style.display =
@@ -28,7 +29,7 @@ export default function Home(props) {
         second_layer_hover_remove={second_layer_hover_remove}
         dressProData = {dressProData}
       />
-      <Specific dressProData={dressProData}/>
+      <Specific dressProData={dressProData} addToCartHandler={addToCartHandler}/>
       <Feature />
     </>
   );
